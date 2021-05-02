@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import CommentList from './comment-list';
 import NewComment from './new-comment';
 import classes from './comments.module.css';
-import {useRouter,useEffect} from "next/router";
+import {useRouter} from "next/router";
 import CircularIndeterminate from "../loading/loading";
 import CustomizedSnackbars from "../ui/successAlert";
 
