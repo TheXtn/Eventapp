@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import CommentList from './comment-list';
 import NewComment from './new-comment';
 import classes from './comments.module.css';
-import {useRouter} from "next/router";
+import {useRouter,useEffect} from "next/router";
 import CircularIndeterminate from "../loading/loading";
 import CustomizedSnackbars from "../ui/successAlert";
 
@@ -13,13 +13,18 @@ function Comments(props) {
   const [comments,setcomments]=useState([])
   const [showComments, setShowComments] = useState(false);
   const [check,setcheck]=useState(false)
-  function toggleCommentsHandler() {
-    setShowComments((prevStatus) => !prevStatus);
-    if (!showComments){
-      fetch('/api/comments/'+eventId).then((response)=>response.json()).then((data)=>{
+  useEffect(()=>{
+        const interval = setInterval(() => {
+           fetch('/api/comments/'+eventId).then((response)=>response.json()).then((data)=>{
       setcomments(data)
       })
-    }
+
+  }, 1000);
+
+    },[])
+  function toggleCommentsHandler() {
+    setShowComments((prevStatus) => !prevStatus);
+    
   }
 
   function addCommentHandler(commentData) {
