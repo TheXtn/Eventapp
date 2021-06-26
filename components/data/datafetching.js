@@ -1,6 +1,6 @@
 export async function  Allevents() {
 
-    const res = await fetch('/api/getdata')
+    const res = await fetch('https://eventxtn.vercel.app/api/getdata')
     const data = await res.json()
     const events = []
     for (const key in data) {
