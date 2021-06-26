@@ -1,6 +1,6 @@
 export async function  Allevents() {
 
-    const res = await fetch('https://www.eventsapp.ga/api/getdata')
+    const res = await fetch('/api/getdata')
     const data = await res.json()
     const events = []
     for (const key in data) {
